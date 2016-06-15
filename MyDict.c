@@ -92,7 +92,7 @@ TrieNode * CreateDict() {
 	/*
 	 * 打开同一个目录下的原始文件。
 	 */
-	fp = fopen("raw-dict", "r");
+	fp = fopen("C:\\Users\\asus\\OneDrive\\Code\\MyDict\\raw-dict", "r");
 	if (!fp) {
 		fprintf(stderr, "FATAL ERROR: raw-dict not exist\n");
 		exit(1);
