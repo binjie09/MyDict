@@ -10,18 +10,18 @@
 #define R 128
 
 /*
- * Node definition of the diction tree
+ * 字典树节点的定义
  */
 typedef struct TrieNode {
-	struct TrieNode *child[R];//each node has R childs
-	char *inter;//save the word's interpretation
+	struct TrieNode *child[R];//每一个节点有R个孩子
+	char *inter;//保存解释
 } TrieNode;
 
 /*
  * Insert a word and it's interpretation into the diction tree。
  * root初始指向树根，word是要插入的单词，inter指向单词对应的意思。
  */
-void InsertDict(TrieNode *root, char *word, char *inter) {
+void InsertDict(TrieNode *root, char *word, char *inter) { 
 	int wordLen = strlen(word);
 	int index;
 
