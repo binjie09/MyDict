@@ -112,7 +112,7 @@ TrieNode * CreateDict() {
 		InsertDict(root, word, inter);
 	}
 	fclose(fp);
-	printf("*****Total number of words is %u.*****\n", wordNumber);
+	printf("*****从牛津词典中加载了 %u.个单词*****\n", wordNumber);
 	return root;
 }
 
@@ -128,7 +128,7 @@ void QueryDict(TrieNode *root, char *word) {
 	 * 或者要查找的结点为空，则该单词不存在。
 	 */
 	if (wordLen == 0 || root == NULL) {
-		fprintf(stdout, "The word not exist\n");
+		fprintf(stdout, "The word not exist\n\n");
 		return;
 	}
 
@@ -143,9 +143,9 @@ void QueryDict(TrieNode *root, char *word) {
 		 * 结点不为空但是但是不构成单词，则要查的单词也不存在。
 		 */
 		if (root->child[index] && root->child[index]->inter)
-			fprintf(stdout, "%s\n", root->child[index]->inter);
+			fprintf(stdout, "%s\n\n", root->child[index]->inter);
 		else
-			fprintf(stdout, "The word not exist.\n");
+			fprintf(stdout, "The word not exist.\n\n");
 	} else {
 		/*
 		 * 继续扫描后续字母
@@ -181,7 +181,7 @@ int main(int argc, char *argv[]) {
 	dict = CreateDict();
 
 	
-	printf("*****Input --quit for quiting.*****\n");
+	printf("*****输入 --quit 退出.*****\n");
 	do {
 		printf(">>>>>>>输入要查询的单词");
 		scanf("%s", query);
