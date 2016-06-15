@@ -1,7 +1,9 @@
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+
 /*
  * use the ascii set
  */
@@ -19,8 +21,7 @@ typedef struct TrieNode {
  * Insert a word and it's interpretation into the diction tree。
  * root初始指向树根，word是要插入的单词，inter指向单词对应的意思。
  */
-void
-InsertDict(TrieNode *root, char *word, char *inter) {
+void InsertDict(TrieNode *root, char *word, char *inter) {
 	int wordLen = strlen(word);
 	int index;
 
@@ -75,8 +76,7 @@ InsertDict(TrieNode *root, char *word, char *inter) {
  * 读取原始文件创建字典，最后返回字典树的根节点。
  * 内部调用上面的InsertDict函数。
  */
-TrieNode *
-CreateDict() {
+TrieNode * CreateDict() {
 	FILE *fp = NULL;
 	char word[300], inter[300];
 	size_t wordNumber = 0;
@@ -120,8 +120,7 @@ CreateDict() {
  * 查找单词。
  * root初始为根节点，word指向要查找的单词.
  */
-void
-QueryDict(TrieNode *root, char *word) {
+void QueryDict(TrieNode *root, char *word) {
 	int index;
 	int wordLen = strlen(word);
 	/*
@@ -174,20 +173,17 @@ TestAndTolower(char *word) {
 	}
 	return 1;
 }
-int
-main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	char query[200];
 	TrieNode *dict;
 
-	struct timeval start, end;
-	gettimeofday(&start, NULL);
+	
 	dict = CreateDict();
-	gettimeofday(&end, NULL);
 
-	printf("*****建立词典耗时 %.4f s.*****\n", 1.0 * (1000000 * (end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec)) / 1000000);	
+	
 	printf("*****Input --quit for quiting.*****\n");
 	do {
-		printf(">>>>>>>");
+		printf(">>>>>>>输入要查询的单词");
 		scanf("%s", query);
 		if (TestAndTolower(query) == 0) {
 			printf("Invalid input");
